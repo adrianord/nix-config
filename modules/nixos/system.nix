@@ -27,6 +27,6 @@
   };
 
   virtualisation = {
-    vmware.guest.enable = true;
+    vmware.guest.enable = conf.host.virtualized or false;
   };
 }

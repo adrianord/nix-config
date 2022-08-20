@@ -6,6 +6,7 @@ packages = []
 name = "igg"
 arch = "x86_64"
 os = "linux" # linux for nixos or darwin for macos
+virtualized = true # only applicable to linux, defaults to false
 
 [user]
 name = "jdoe"
