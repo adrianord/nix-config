@@ -1,0 +1,13 @@
+modulePacks = [ "standard" ]
+modules = []
+packages = []
+
+[host]
+name = "igg"
+arch = "x86_64"
+os = "nixos"
+
+[user]
+name = "jdoe"
+fullname = "John Doe"
+email = "jdoe@email.com"
