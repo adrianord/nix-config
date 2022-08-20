@@ -42,6 +42,12 @@ let
       '';
   };
 
+  wallpaper = builtins.fetchurl {
+    url = "https://f002.backblazeb2.com/file/adrianordonez-dotfiles/background-porsche.jpg";
+    sha256 = "1jjg5l68dzajnnqxh69q3kr2smkgbrpmayp16lxkfa95kgw595c3";
+  };
+
+
   modifier = "Mod4";
   terminal = "alacritty";
   menu = "rofi -modi drun -show drun";
@@ -53,8 +59,10 @@ in
 {
   environment.systemPackages = with pkgs; [
     alacritty
+    feh
     rofi
     sway
+    swaybg
     dbus-sway-environment
     configure-gtk
     wayland
@@ -204,7 +212,11 @@ in
           "${modifier}+r" = "mode resize";
         };
         focus.followMouse = false;
+
       };
+      extraConfig = ''
+        output "*" bg ${wallpaper} fill
+      '';
 
       extraSessionCommands = ''
         export MOZ_ENABLE_WAYLAND=1
