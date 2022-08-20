@@ -7,5 +7,7 @@
     ./languages
     ./neovim.nix
     ./zsh.nix
+    ./git.nix
+    ./firefox.nix
   ];
 }

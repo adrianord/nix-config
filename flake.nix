@@ -38,14 +38,15 @@
       };
       host = hostTypes.${conf.host.os};
       enabledModulePacks = builtins.concatMap (x: modulePacks.${x}) conf.host.modulePacks or [ "standard" ];
-      extraModules = builtins.concatMap (x: ./modules/${x}) conf.host.modules or [ ];
-      extraPackages = builtins.concatMap (x: nixpkgs.${x}) conf.host.packages or [ ];
+      extraModules = map (x: ./modules/${x}) conf.host.modules or [ ];
+      extraPackages = map (x: nixpkgs.${x}) conf.host.packages or [ ];
     in
     {
       "${host.configurations}"."${conf.host.name}" = host.system {
         system = conf.host.arch + "-linux";
         specialArgs = { inherit inputs self conf; };
         modules = host.modules ++ [
+          ./modules/home.nix
           {
             nix.extraOptions = ''
               experimental-features = nix-command flakes
@@ -53,7 +54,6 @@
           }
           { nixpkgs.config.allowUnfree = true; }
           { home._.home.packages = extraPackages; }
-          ./modules/home.nix
         ] ++ enabledModulePacks ++ extraModules;
       };
     };

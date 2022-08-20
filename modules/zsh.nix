@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, conf, lib, ... }:
 
 
 let
@@ -7,9 +7,23 @@ let
   FZF_BAT_PREVIEW = "bat --decorations always --color always {}";
   FZF_BAT_LS_PREVIEW = "if [ -d {} ]; then ${FZF_LS_PREVIEW} ; else ${FZF_BAT_PREVIEW}; fi";
   FZF_CTRL_T_OPTS = "${FZF_PREVIEW_BIND} --preview '${FZF_BAT_LS_PREVIEW}'";
+
 in
 {
+  users.users.${conf.user.name} = lib.mkIf (conf.host.os == "nixos") {
+    shell = pkgs.zsh;
+  };
+  environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
+
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    fira-code
+    fira-code-symbols
+  ];
+
   home._ = {
     home.packages = with pkgs; [
       fd
@@ -17,8 +31,6 @@ in
       nix-zsh-completions
     ];
     home.sessionVariables = {
-      BROWSER = "firefox";
-
       FZF_PREVIEW_BIND = FZF_PREVIEW_BIND;
       FZF_LS_PREVIEW = FZF_LS_PREVIEW;
       FZF_BAT_PREVIEW = FZF_BAT_PREVIEW;
@@ -68,6 +80,8 @@ in
       initExtra = ''
         bindkey '^F' fzf-cd-widget
         bindkey '^Y' fzf-file-widget
+        bindkey "^[[1;5C" forward-word
+        bindkey "^[[1;5D" backward-word
       '';
     };
     programs.starship = {

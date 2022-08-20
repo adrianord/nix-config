@@ -52,7 +52,8 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    terminal
+    alacritty
+    rofi
     sway
     dbus-sway-environment
     configure-gtk
@@ -76,6 +77,13 @@ in
     pulse.enable = true;
   };
 
+  services.xserver = {
+    enable = true;
+    displayManager = {
+      gdm.enable = true;
+      defaultSession = "sway";
+    };
+  };
 
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces
   # known as portals under a well-known name

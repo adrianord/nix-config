@@ -25,4 +25,8 @@
     # TODO: Move to agenix for more security
     hashedPassword = "$6$CdlIUcX0jg2SP1F9$R9QlckBEFHN6lDVhopf.ly4MBTxFC1ISaWMkDppbg5PJoICO8brE8ggw8Hf9byBrMAIP4tIF0jCM7zsqL1HQv/";
   };
+
+  virtualisation = {
+    vmware.guest.enable = true;
+  };
 }
