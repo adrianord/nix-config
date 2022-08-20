@@ -11,3 +11,9 @@ os = "linux" # linux for nixos or darwin for macos
 name = "jdoe"
 fullname = "John Doe"
 email = "jdoe@email.com"
+
+[user.work.company]
+email = "jdoe@company.com"
+
+[user.work.company.git]
+initBranch = "master" # defaults to main

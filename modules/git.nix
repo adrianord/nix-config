@@ -1,10 +1,26 @@
-{ pkgs, conf, ... }:
+{ pkgs, conf, lib, ... }:
 
+let
+  includes = lib.mapAttrsToList
+    (name: value: {
+      condition = "gitdir:~/Code/work/${name}/";
+      contents = {
+        user = {
+          email = value.email;
+        };
+        init = {
+          defaultBranch = value.git.initBranch or "main";
+        };
+      };
+    })
+    conf.user.work or { };
+in
 {
   home._.programs.git = {
     enable = true;
     userName = conf.user.fullname;
     userEmail = conf.user.email;
+    inherit includes;
     aliases = {
       a = "add";
       b = "branch";
@@ -30,9 +46,7 @@
         autoSetupRemote = true;
       };
       init = {
-        # I like the name main more for aesthetic reasons,
-        # but using master for historical reasons
-        defaultBranch = "master";
+        defaultBranch = "main";
       };
     };
     delta = {
