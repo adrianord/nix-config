@@ -87,7 +87,9 @@ in
     programs.starship = {
       enable = true;
       enableZshIntegration = true;
-      settings = { };
+      settings = {
+        add_newline = false;
+      };
     };
     programs.fzf = {
       enable = true;

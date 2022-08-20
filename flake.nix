@@ -19,7 +19,7 @@
 
       modulePacks = import ./modules;
       hostTypes = {
-        "nixos" = {
+        "linux" = {
           configurations = "nixosConfigurations";
           system = nixpkgs.lib.nixosSystem;
           modules = [
@@ -43,7 +43,7 @@
     in
     {
       "${host.configurations}"."${conf.host.name}" = host.system {
-        system = conf.host.arch + "-linux";
+        system = conf.host.arch + "-" + conf.host.os;
         specialArgs = { inherit inputs self conf; };
         modules = host.modules ++ [
           ./modules/home.nix

@@ -5,7 +5,7 @@ packages = []
 [host]
 name = "igg"
 arch = "x86_64"
-os = "nixos"
+os = "linux" # linux for nixos or darwin for macos
 
 [user]
 name = "jdoe"
