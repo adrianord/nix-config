@@ -5,6 +5,7 @@
     ./dotnet.nix
     ./python.nix
     ./nix.nix
+    ./dhall.nix
   ];
   home._ = {
     home.packages = with pkgs; [
