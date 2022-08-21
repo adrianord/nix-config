@@ -10,9 +10,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    vscodeInsiders.url = "github:cideM/visual-studio-code-insiders-nix";
+
   };
 
-  outputs = { self, darwin, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, darwin, nixpkgs, home-manager, vscodeInsiders, ... }@inputs:
     let
       # TODO: Come up with better logic for loading config.toml, check several locations.
       conf = builtins.fromTOML (builtins.readFile (toString ./config.toml));
@@ -52,6 +54,13 @@
             '';
           }
           { nixpkgs.config.allowUnfree = true; }
+          {
+            nixpkgs.overlays = [
+              (self: super: {
+                vscodeInsiders = vscodeInsiders.packages.${super.system}.vscodeInsiders;
+              })
+            ];
+          }
           { home._.home.packages = extraPackages; }
         ] ++ enabledModulePacks ++ extraModules;
       };
