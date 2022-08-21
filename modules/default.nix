@@ -9,5 +9,6 @@
     ./zsh.nix
     ./git.nix
     ./firefox.nix
+    ./direnv.nix
   ];
 }
