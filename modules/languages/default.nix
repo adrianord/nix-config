@@ -4,14 +4,11 @@
   imports = [
     ./dotnet.nix
     ./python.nix
+    ./nix.nix
   ];
   home._ = {
     home.packages = with pkgs; [
-      nixpkgs-fmt
-      rnix-lsp
-
       nodejs
-
 
       vale
     ];
