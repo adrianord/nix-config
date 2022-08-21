@@ -10,7 +10,7 @@ let
 
 in
 {
-  users.users.${conf.user.name} = lib.mkIf (conf.host.os == "nixos") {
+  users.users.${conf.user.name} = lib.mkIf (conf.host.os == "linux") {
     shell = pkgs.zsh;
   };
   environment.shells = with pkgs; [ zsh ];

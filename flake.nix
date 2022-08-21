@@ -18,7 +18,7 @@
       conf = builtins.fromTOML (builtins.readFile (toString ./config.toml));
 
       modulePacks = import ./modules;
-      hostTypes = {
+      host = {
         "linux" = {
           configurations = "nixosConfigurations";
           system = nixpkgs.lib.nixosSystem;
@@ -35,8 +35,7 @@
             home-manager.darwinModules.home-manager
           ];
         };
-      };
-      host = hostTypes.${conf.host.os};
+      }.${conf.host.os};
       enabledModulePacks = builtins.concatMap (x: modulePacks.${x}) conf.host.modulePacks or [ "standard" ];
       extraModules = map (x: ./modules/${x}) conf.host.modules or [ ];
       extraPackages = map (x: nixpkgs.${x}) conf.host.packages or [ ];
