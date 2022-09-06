@@ -1,4 +1,4 @@
-{ self, config, pkgs, ... }:
+{ self, config, pkgs, ... }@inputs:
 
 {
   services.nix-daemon.enable = true;
@@ -10,6 +10,32 @@
   system.stateVersion = 4;
 
   system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
-  system.defaults.NSGlobalDomain.KeyRepeat = 10;
+  system.defaults.NSGlobalDomain.InitialKeyRepeat = 15;
+  system.defaults.NSGlobalDomain.KeyRepeat = 2;
+
+  homebrew = {
+    enable = true;
+    casks = [
+      "raycast"
+      "iterm2"
+      "karabiner-elements"
+      "alt-tab"
+      "multitouch"
+      "rectangle"
+      "spotify"
+      "obsidian"
+    ];
+  };
+
+  home._ = { config, pkgs, ... }: {
+    home.file."Applications/Home Manager Apps".source =
+      let
+        apps = pkgs.buildEnv {
+          name = "home-manager-applications";
+          paths = config.home.packages;
+          pathsToLink = "/Applications";
+        };
+      in
+      "${apps}/Applications";
+  };
 }

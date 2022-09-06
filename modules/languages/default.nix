@@ -6,6 +6,7 @@
     ./python.nix
     ./nix.nix
     ./dhall.nix
+    ./toml.nix
   ];
   home._ = {
     home.packages = with pkgs; [

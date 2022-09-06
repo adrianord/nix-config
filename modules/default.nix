@@ -11,4 +11,7 @@
     ./firefox.nix
     ./direnv.nix
   ];
+  personal = [
+    ./personal
+  ];
 }

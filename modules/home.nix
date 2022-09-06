@@ -1,4 +1,4 @@
-{ config, conf, pkgs, lib, options, ... }:
+{ config, conf, pkgs, lib, options, inputs, ... }:
 
 # https://rycee.gitlab.io/home-manager/options.html
 with lib;
@@ -19,5 +19,6 @@ with lib;
       home.stateVersion = "22.11";
     };
     home-manager.users.${conf.user.name} = mkAliasDefinitions options.home._;
+    
   };
 }

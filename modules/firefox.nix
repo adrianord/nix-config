@@ -5,15 +5,22 @@
     home.sessionVariables = {
       BROWSER = "firefox";
     };
-    programs.firefox = lib.mkIf (conf.host.os == "linux") {
+    programs.firefox = {
       enable = true;
-      package = pkgs.firefox-wayland;
+      package = pkgs.firefox-bin;
       profiles.${conf.user.name} = {
+        isDefault = true;
         path = conf.user.name;
         settings = {
           "browser.fullscreen.autohide" = false;
+          "browser.ctrlTab.sortByRecentlyUsed" = true;
         };
       };
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        bitwarden
+        vimium
+        darkreader
+      ];
     };
     xdg.mimeApps = lib.mkIf (conf.host.os == "linux") {
       enable = true;

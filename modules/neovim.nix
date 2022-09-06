@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-
   home._ = {
     home.sessionVariables = {
       EDITOR = "vim";
