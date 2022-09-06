@@ -2,7 +2,7 @@
   nixos = ./nixos;
   darwin = ./darwin;
   standard = [
-    ./code.nix
+    ./vscode
     ./kubernetes.nix
     ./languages
     ./neovim.nix

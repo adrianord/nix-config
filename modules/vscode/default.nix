@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./userSettings.nix
+    ./keybindings.nix
+    ./extensions
+  ];
   home._.programs.vscode = {
     enable = true;
     package = pkgs.vscodeInsiders;
