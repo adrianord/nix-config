@@ -7,6 +7,7 @@
     ./nix.nix
     ./dhall.nix
     ./toml.nix
+    ./rust.nix
   ];
   home._ = {
     home.packages = with pkgs; [

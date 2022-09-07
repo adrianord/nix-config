@@ -1,7 +1,7 @@
-nur: final: prev:
+nur: self: super:
 {
   nur = import nur {
-    nurpkgs = prev;
-    pkgs = prev;
+    nurpkgs = super;
+    pkgs = super;
   };
 }

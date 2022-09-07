@@ -4,6 +4,7 @@
   home._ = {
     home.packages = with pkgs; [
       dotnet-sdk
+      jetbrains.rider
     ];
     home.sessionPath = [
       "$HOME/.dotnet/tools"

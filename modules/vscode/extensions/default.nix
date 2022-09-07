@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-  imports = [];
+  imports = [
+    ./errorlens.nix
+  ];
   
   home._.programs.vscode = {
     extensions = with pkgs.vscode-extensions; [
