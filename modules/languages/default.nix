@@ -2,24 +2,15 @@
 
 {
   imports = [
-    ./dotnet.nix
-    ./python.nix
-    ./nix.nix
     ./dhall.nix
-    ./toml.nix
+    ./dotnet.nix
+    ./go.nix
+    ./nix.nix
+    ./nodejs.nix
+    ./python.nix
     ./rust.nix
+    ./toml.nix
+    ./vale.nix
+    ./yaml.nix
   ];
-  home._ = {
-    home.packages = with pkgs; [
-      nodejs
-
-      vale
-    ];
-    programs = {
-      go = {
-        enable = true;
-        package = pkgs.go_1_19;
-      };
-    };
-  };
 }

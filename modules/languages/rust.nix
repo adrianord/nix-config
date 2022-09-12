@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./toml.nix
+  ];
   home._ = {
     home.packages = with pkgs; [
       cargo
@@ -15,6 +18,17 @@
         rust-lang.rust-analyzer
         serayuzgur.crates
       ];
+
+      userSettings = {
+        rust-analyzer = {
+          inlayHints = {
+            parameterHints.enable = false;
+            typeHints.enable = false;
+            chainingHints.enable = false;
+            closingBraceHints.enable = false;
+          };
+        };
+      };
     };
   };
 }

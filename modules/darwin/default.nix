@@ -24,6 +24,8 @@
       "rectangle"
       "spotify"
       "obsidian"
+      "nordvpn"
+      "notion"
     ];
   };
 

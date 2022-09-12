@@ -19,5 +19,10 @@
 
       compdef _dotnet_zsh_complete dotnet
     '';
+    programs.vscode = {
+      extensions = with pkgs.vscode-extensions; [
+        ms-dotnettools.csharp
+      ];
+    };
   };
 }
