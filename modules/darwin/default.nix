@@ -1,4 +1,4 @@
-{ self, config, pkgs, ... }@inputs:
+{ self, config, conf, pkgs, ... }@inputs:
 
 {
   services.nix-daemon.enable = true;
@@ -15,6 +15,9 @@
 
   homebrew = {
     enable = true;
+    taps = [
+      "homebrew/cask-fonts"
+    ];
     casks = [
       "raycast"
       "iterm2"
@@ -26,6 +29,8 @@
       "obsidian"
       "nordvpn"
       "notion"
+      "font-inconsolata-nerd-font"
+      "font-jetbrains-mono-nerd-font"
     ];
   };
 
@@ -40,4 +45,6 @@
       in
       "${apps}/Applications";
   };
+
+  security.pki.certificates = conf.trusted;
 }

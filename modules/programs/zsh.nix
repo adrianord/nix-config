@@ -22,6 +22,7 @@ in
     noto-fonts-emoji
     fira-code
     fira-code-symbols
+    jetbrains-mono
   ];
 
   home._ = {

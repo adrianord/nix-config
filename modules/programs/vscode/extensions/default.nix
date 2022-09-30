@@ -11,6 +11,8 @@
       Catppuccin.catppuccin-vsc
       streetsidesoftware.code-spell-checker
       PKief.material-icon-theme
+      Gruntfuggly.todo-tree
+      ms-vscode-remote.remote-ssh
     ];
     userSettings = {
       workbench = {

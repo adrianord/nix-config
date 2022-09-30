@@ -1,8 +1,13 @@
 { ... }:
 
+let
+  fontFamily = "JetBrainsMono Nerd Font";
+  fontSize = 13;
+in
 {
   home._.programs.vscode.userSettings = {
     editor = {
+      inherit fontFamily fontSize;
       renderWhitespace = "all";
       wordWrap = "off";
       minimap.enabled = false;
@@ -12,9 +17,7 @@
       formatOnPaste = false;
       insertSpaces = true;
       inlineSuggest.enabled = true;
-      experimental = {
-        stikeyScroll.enabled = true;
-      };
+      stickyScroll.enabled = true;
     };
     explorer = {
       openEditors.visible = 0;
@@ -28,7 +31,10 @@
     };
     terminal = {
       copyOnSelection = false;
-      integrated.scrollback = 1000000000;
+      integrated = {
+        inherit fontFamily fontSize;
+        scrollback = 1000000000;
+      };
     };
     files = {
       trimTailingWhitespace = true;

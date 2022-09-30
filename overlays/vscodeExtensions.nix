@@ -33,6 +33,13 @@ let
       version = "4.20.0";
       sha256 = "sha256-OfFN//lnRPouREucEJKpKfXcyCN/nnZtH5oD23B4YX0=";
     }
+    #Gruntfuggly.todo-tree
+    {
+      name = "todo-tree";
+      publisher = "Gruntfuggly";
+      version = "0.0.215";
+      sha256 = "sha256-WK9J6TvmMCLoqeKWh5FVp1mNAXPWVmRvi/iFuLWMylM=";
+    }
   ];
 
   extensionsListOfSet = map (x: { ${x.publisher}.${x.name} = pkgs.vscode-utils.extensionFromVscodeMarketplace x; }) extensionsList;

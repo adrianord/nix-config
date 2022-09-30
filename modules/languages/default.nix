@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./dhall.nix
+    #./dhall.nix
     ./dotnet.nix
     ./go.nix
     ./nix.nix

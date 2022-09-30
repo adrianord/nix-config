@@ -2,9 +2,14 @@
 
 {
   home._ = {
+    home.sessionVariables = {
+      NPM_CONFIG_PREFIX = "$HOME/.node_modules";
+    };
     home.packages = with pkgs;
       [
         nodejs
+        jq
+        #nodePackages."@angular/cli"
       ];
 
     programs.vscode = {
@@ -21,6 +26,9 @@
         };
         prettier = {
           proseWrap = "always";
+        };
+        "[typescript]" = {
+          "editor.defaultFormatter" = "vscode.typescript-language-features";
         };
       };
     };
