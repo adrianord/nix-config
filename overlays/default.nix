@@ -9,5 +9,5 @@
     inputs.firefox-darwin.overlay
   ];
   linux = [
-  ]; 
+  ];
 }

@@ -18,8 +18,7 @@
       };
     };
     zsh = {
-      shellAliases = {
-      };
+      shellAliases = { };
     };
   };
 }

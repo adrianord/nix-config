@@ -1,4 +1,4 @@
-{ self, config, conf, pkgs, ... }@inputs:
+{ self, config, conf, pkgs, ... }:
 
 {
   services.nix-daemon.enable = true;
@@ -31,6 +31,8 @@
       "notion"
       "font-inconsolata-nerd-font"
       "font-jetbrains-mono-nerd-font"
+      "microsoft-remote-desktop"
+      "unnaturalscrollwheels"
     ];
   };
 
@@ -47,4 +49,9 @@
   };
 
   security.pki.certificates = conf.trusted;
+
+  users.users.aordonez = {
+    name = "aordonez";
+    home = "/Users/aordonez";
+  };
 }

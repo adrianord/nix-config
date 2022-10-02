@@ -2,6 +2,6 @@
 
 {
   home._.home.packages = with pkgs; [
-   # azure-cli
+    # azure-cli
   ];
 }

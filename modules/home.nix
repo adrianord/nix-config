@@ -19,6 +19,6 @@ with lib;
       home.stateVersion = "22.11";
     };
     home-manager.users.${conf.user.name} = mkAliasDefinitions options.home._;
-    
+
   };
 }
